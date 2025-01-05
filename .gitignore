@@ -22,6 +22,7 @@ log.txt
 /www
 /platforms
 /plugins
+/android/
 
 # Compiled output
 /dist
@@ -69,5 +70,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-#mis datos
+# Credentials
 /src/credentials.ts
