@@ -63,3 +63,10 @@ ion-label p {
   background: transparent;
 }
 
+/* Sobrescribe el fondo de .list-md para hacerlo transparente */
+:host ::ng-deep .list-md {
+  background: transparent !important; /* Fondo transparente */
+  --ion-item-background: transparent; /* Variable asociada */
+}
+
+

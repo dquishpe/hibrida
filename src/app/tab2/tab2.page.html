@@ -21,7 +21,7 @@
       <p>On a scale of 1 to 5, how do you feel today?</p>
 
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <ion-select formControlName="score" label="You feel today?" placeholder="Select">
+        <ion-select formControlName="score" label="You feel today?" placeholder="Select" interface="popover" class="select">
           <ion-select-option value="1">1 😢</ion-select-option>
           <ion-select-option value="2">2 😟</ion-select-option>
           <ion-select-option value="3">3 😐</ion-select-option>

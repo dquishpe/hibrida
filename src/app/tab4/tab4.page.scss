@@ -64,3 +64,11 @@ ion-item {
   border: none; /* Si hay bordes adicionales */
   border-color: transparent;
 }
+
+img {
+  width: 85px; /* Ancho de la imagen */
+  height: 85px; /* Alto de la imagen (igual al ancho para que sea cuadrada) */
+  border-radius: 50%; /* Convierte el contorno en un círculo */
+  object-fit: cover; /* Asegura que la imagen se recorte adecuadamente para llenar el círculo */
+  display: block; /* Opcional: Para eliminar espacios adicionales si es inline */
+}

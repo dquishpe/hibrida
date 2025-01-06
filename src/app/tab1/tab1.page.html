@@ -61,7 +61,7 @@
           <ion-thumbnail slot="start">
             <img
               alt="{{ item?.className }}"
-              [src]="'assets/images/' + item?.className.toLowerCase() + '.jpg'"
+              [src]="'assets/images/' + item?.className.toLowerCase() + '.png'"
               class="result-image"
             />
           </ion-thumbnail>
@@ -78,7 +78,7 @@
   <!-- SUGERENCIAS BASADAS EN LA PREDICCIÓN -->
   <ion-card *ngIf="topPrediction" class="suggestion-card">
     <ion-card-header>
-      <ion-card-title>Suggestion</ion-card-title>
+      <ion-card-title>Suggestion✨</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>{{ suggestions[topPrediction?.className] }}</p>
