@@ -35,3 +35,37 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Theme variables */
+  ion-content {
+    --background: #ffffff; /* Fondo blanco para todas las páginas */
+  }
+  
+  ion-toolbar {
+    --background: #4d8dff; /* Fondo turquesa para los toolbars */
+    --color: #ffffff; /* Color del texto en los toolbars */
+  }
+  
+  body {
+    background-color: #ffffff; /* Asegura que todo el fondo sea blanco */
+  }
+
+  ion-tabs {
+    --background: #ffffff; /* Fondo blanco para el contenedor de tabs */
+  }
+  
+  ion-tab-bar {
+    --background: #ffffff; /* Fondo blanco para la barra de navegación */
+    --color: #00000095; /* Color del texto y los íconos */
+    --color-selected: #4ca49b; /* Color para el tab seleccionado */
+  }
+  
+  ion-title {
+    color: #231e4aba; /* Color del título de las tabs */
+    font-size: 20px; /* Tamaño del título de las tabs */
+    font-weight: bold; /* Estilo del título de las tabs */
+  }
+
+  ion-toolbar {
+    padding: 4px;
+  }

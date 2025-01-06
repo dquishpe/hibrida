@@ -1,9 +1,65 @@
-.titulo {
-    color: var(--ion-color-primary);
-      font-weight: bold;
-      text-align: center;
-  }
- 
-  p#descripcion {
-    text-align: justify;
-  }
+:host {
+  --ion-background-color: #ffffff;
+}
+
+/* Custom Card Styles */
+.custom-card {
+  background: linear-gradient(135deg, #64c4c4, #4d3b99);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --padding-start: 0; /* Sin padding al inicio */
+  --padding-end: 0; /* Sin padding al final */
+  --padding-top: 0; /* Sin padding arriba */
+  --padding-bottom: 0; /* Sin padding abajo */
+  padding: 0;
+}
+
+/* Card title styling */
+ion-card-title {
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.5em;
+  color: #ffffff; /* White text for contrast */
+}
+
+ion-list {
+  --ion-border-color: transparent;
+  --background: transparent; /* Fondo transparente si es necesario */
+  border: none; /* Asegúrate de que no haya bordes definidos */
+  box-shadow: none; /* Elimina cualquier sombra */
+}
+
+ion-item {
+  --ion-item-border-color: transparent; /* Elimina el color del borde */
+  --border-color: transparent; /* Adicional para asegurarte */
+  --inner-border-width: 0; /* Asegúrate de que no haya bordes internos */
+  --background: transparent; /* Fondo transparente para integrarse mejor */
+  border: none; /* Si hay bordes adicionales */
+  color: #ffffff;
+  background-color: transparent; /* Match card background */
+  border-color: transparent;
+}
+
+/* Avatar and list item styling */
+ion-avatar img {
+  border-radius: 50%;
+}
+
+ion-label h2 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+ion-label p {
+  color: #ffffff; /* Slightly lighter gray for roles */
+  font-style: italic;
+}
+
+:host ::ng-deep .list-ios {
+  --ion-border-color: transparent;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+

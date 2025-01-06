@@ -1,66 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Teachable Machine </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- HEADER -->
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Teachable Machine</ion-title>
+      <ion-title>🌟FeelAI</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- CARGA DE IMAGEN - INICIO -->
-  @if(imageReady()) {
-  <ion-card>
-    <img #image [src]="imageUrl()" alt="Imagen seleccionada" />
-
-    <!-- CARGA DE PREDICCIÓN - INICIO -->
-
-    @if(modelLoaded()) {
-
-    <div class="ion-text-center ion-padding-top ion-padding-bottom">
-      <ion-button fill="outline" color="success" (click)="predict()"
-        >Predecir</ion-button
-      >
-    </div>
-
-    <ion-list>
-      <ion-item>
-        <ion-label>Clases: {{ classLabels }} </ion-label>
-      </ion-item>
-      <!-- Itere sobre la lista de predicciones -->
-      @for (item of predictions; track $index) {
-      <ion-item>
-        <ion-label>
-          {{ item?.className }} : {{ item?.probability | percent }}
-        </ion-label>
-      </ion-item>
-      }
-    </ion-list>
-
-    }
-
-    <!-- CARGA DE PREDICCIÓN - FIN -->
-  </ion-card>
-  }
-  <!-- CARGA DE IMAGEN - FIN -->
-
-  <ion-card *ngIf="predictions.length > 0">
-    <ion-card-header>
-      <ion-card-title>Most Probable Prediction</ion-card-title>
-    </ion-card-header>
+  <!-- MENSAJE INICIAL - Solo se muestra si no se ha subido una imagen -->
+  <ion-card *ngIf="!imageReady()">
     <ion-card-content>
-      <p>
-        {{ topPrediction?.className }}: {{ topPrediction?.probability | percent
-        }}
-      </p>
-      <p>{{ suggestions[topPrediction?.className] }}</p>
+      <h1 class="message">How do you feel now?❤️</h1>
+      <img src="assets/images/emotions.jpg" alt="Emotions" class="emotions"/>
+      <p class="submessage">Upload a photo of yourself and we will predict your emotions <br> 🔽🔽🔽</p>
     </ion-card-content>
   </ion-card>
 
-  <!-- Referencia en plantilla #fileInput, callback para el evento change y oculte el elemento -->
+  <!-- BOTÓN PARA SUBIR IMAGEN - Solo se muestra si no se ha subido una imagen -->
+  <ion-button
+    *ngIf="!imageReady()"
+    class="upload-button"
+    expand="block"
+    (click)="fileInput.click()"
+  >
+    <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+    Upload Photo
+  </ion-button>
   <input
     #fileInput
     type="file"
@@ -69,10 +33,56 @@
     hidden
   />
 
-  <!-- Disparo del evento click de fileInput -->
-  <ion-fab slot="fixed" vertical="bottom" horizontal="center">
-    <ion-fab-button (click)="fileInput.click()">
-      <ion-icon name="cloud-upload-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <!-- MOSTRAR IMAGEN SUBIDA - Solo se muestra si la imagen está lista -->
+  <div *ngIf="imageReady()">
+    <img #image [src]="imageUrl()" alt="Selected Image" class="img"/>
+  </div>
+
+  <!-- BOTÓN DE PREDICCIÓN - Solo se muestra si la imagen está lista -->
+  <ion-button
+    *ngIf="imageReady()"
+    class="upload-button"
+    expand="block"
+    (click)="predict()"
+  >
+    <ion-icon slot="start" name="analytics-outline"></ion-icon>
+    Predict
+  </ion-button>
+
+  <!-- RESULTADOS DE LA PREDICCIÓN -->
+  <ion-card *ngIf="predictions.length > 0" class="prediction-card">
+    <ion-card-header>
+      <ion-card-title>Results</ion-card-title>
+      <ion-card-subtitle>Prediction Results</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list color=#f0f0f0 >
+        <ion-item *ngFor="let item of predictions; let i = index">
+          <ion-thumbnail slot="start">
+            <img
+              alt="{{ item?.className }}"
+              [src]="'assets/images/' + item?.className.toLowerCase() + '.jpg'"
+              class="result-image"
+            />
+          </ion-thumbnail>
+          <ion-label>
+            <p class="result-text">
+              {{ item?.className }}: {{ item?.probability | percent }}
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- SUGERENCIAS BASADAS EN LA PREDICCIÓN -->
+  <ion-card *ngIf="topPrediction" class="suggestion-card">
+    <ion-card-header>
+      <ion-card-title>Suggestion</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ suggestions[topPrediction?.className] }}</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

@@ -1,0 +1,53 @@
+.content-background {
+    background-color: #ffffff;
+  }
+  
+  .banner-image {
+    border-radius: 12px;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .styled-card {
+    border-radius: 16px;
+    background: linear-gradient(135deg, #64c4c4, #4d3b99);
+    color: #fff;
+  }
+  
+  ion-card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .custom-textarea {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+  }
+  
+  .chart-container {
+    position: relative;
+    height: 300px;
+  }
+  
+  .feedback-message {
+    text-align: center;
+    color: #4d3b99;
+    font-size: 1rem;
+  }
+  
+  ion-list {
+    /* Sobrescribe el fondo de list-ios */
+    --ion-item-background: transparent !important; /* Hace transparente el fondo de los items */
+    --ion-background-color: transparent !important; /* Hace transparente el fondo del componente */
+  }
+  
+  
+  ion-item::part(native) {
+    background: transparent !important; /* Fondo transparente de los elementos */
+  }
+  
+  ion-label {
+    color: var(--ion-text-color, #333) !important; /* Cambia el color del texto si es necesario */
+  }
+  

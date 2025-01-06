@@ -1,46 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      FeelAI
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      🌟 FeelAI
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card class="ion-padding ion-text-center">
-    <img src="https://i.pinimg.com/222x/aa/d5/b1/aad5b1aef18d1bad4894d0be57ce956f.jpg" alt="Felicidad" />
-  </ion-card>
+<ion-content [fullscreen]="true" class="content-background">
+  <div class="ion-padding ion-text-center">
+    <img src="assets/images/frase.jpg" alt="Felicidad" class="banner-image" />
+  </div>
 
-  <ion-card class="ion-padding-bottom ion-margin-bottom">
-
-    <ion-card-header class="ion-text-center">
-      <ion-card-title>My diary today</ion-card-title>
+  <ion-card class="styled-card">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        📖 My Diary Today
+      </ion-card-title>
     </ion-card-header>
-
-    <ion-card-content class="ion-text-center">
-
-      <p>On a scale of 1 to 5 how do</p>
+    <ion-card-content>
+      <p>On a scale of 1 to 5, how do you feel today?</p>
 
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-
         <ion-select formControlName="score" label="You feel today?" placeholder="Select">
-          <ion-select-option value="1">1</ion-select-option>
-          <ion-select-option value="2">2</ion-select-option>
-          <ion-select-option value="3">3</ion-select-option>
-          <ion-select-option value="4">4</ion-select-option>
-          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="1">1 😢</ion-select-option>
+          <ion-select-option value="2">2 😟</ion-select-option>
+          <ion-select-option value="3">3 😐</ion-select-option>
+          <ion-select-option value="4">4 🙂</ion-select-option>
+          <ion-select-option value="5">5 😃</ion-select-option>
         </ion-select>
 
-        <ion-textarea formControlName="opinion" placeholder="Write in your diary..."></ion-textarea>
+        <ion-textarea
+          formControlName="opinion"
+          placeholder="Write in your diary..."
+          class="custom-textarea">
+        </ion-textarea>
 
-        <ion-button type="submit" [disabled]="!myForm.valid" type="submit">Send</ion-button>
-
+        <ion-button expand="block" type="submit" color="tertiary" [disabled]="!myForm.valid">
+          ✉️ Send
+        </ion-button>
       </form>
-
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-padding-bottom ion-margin-bottom">
+
+
+  <!-- <ion-card class="ion-padding-bottom ion-margin-bottom">
 
     <ion-card-header>
       <ion-card-title>Diary</ion-card-title>
@@ -50,6 +54,28 @@
 
       <ion-list>
 
+        CARGA DE DATOS - INICIO
+        @for (datum of dataList; track $index) {
+        <ion-item>
+          <ion-label> {{ datum?.date }} </ion-label>
+          <ion-label> {{ datum?.opinion }} </ion-label>
+        </ion-item>
+        }
+        CARGA DE DATOS - FIN --> 
+
+      <!-- </ion-list>
+
+    </ion-card-content>
+  </ion-card>--> 
+
+  <ion-card class="styled-card">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        🗓️ Diary Entries
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
         <!-- CARGA DE DATOS - INICIO -->
         @for (datum of dataList; track $index) {
         <ion-item>
@@ -57,21 +83,22 @@
           <ion-label> {{ datum?.opinion }} </ion-label>
         </ion-item>
         }
-        <!-- CARGA DE DATOS - FIN -->
-
+        <!-- CARGA DE DATOS - FIN  -->
       </ion-list>
-
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-padding-bottom ion-margin-bottom">
+  <ion-card class="styled-card">
     <ion-card-header>
-      <ion-card-title>¡Visualize your moods during the week!</ion-card-title>
+      <ion-card-title class="ion-text-center">
+        📊 Weekly Mood Tracker
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <canvas id="scoreChart"></canvas>
+      <div class="chart-container">
+        <canvas id="scoreChart"></canvas>
+      </div>
+      <p class="feedback-message">{{ feedbackMessage }}</p>
     </ion-card-content>
-    <p>{{ feedbackMessage }}</p>
   </ion-card>
-
 </ion-content>

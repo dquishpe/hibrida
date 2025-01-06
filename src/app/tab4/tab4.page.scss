@@ -1,9 +1,66 @@
 .titulo {
-  color: var(--ion-color-primary);
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
+  color: #4d8dff; ;
 }
 
-p#descripcion {
-  text-align: justify;
+ion-card {
+  --background: var(--ion-card-color, #ffffff); /* Fondo blanco por defecto */
+  --color: var(--ion-card-text-color, #000000);
+  margin: 12px;
+  border-radius: var(--ion-card-border-radius, 8px); /* Radio de borde */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  border: 2px solid #4d8dff;  /* Borde turquesa */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animación suave */
+}
+
+ion-card:hover {
+  background-color: #4d8dff; /* Fondo turquesa al pasar el mouse */
+  transform: scale(1.02); /* Efecto de agrandamiento */
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espacio entre icono y texto */
+}
+
+.therapist-icon {
+  font-size: 48px; /* Tamaño del icono */
+  color: #4d8dff;  /* Color turquesa para el icono */
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+  color: #333333; /* Color del texto */
+}
+
+h3 {
+  font-size: 16px;
+  margin: 4px 0;
+  color: #555555; /* Color del texto */
+}
+
+p {
+  font-size: 14px;
+  margin: 0;
+  color: #777777; /* Color del texto */
+}
+
+ion-list {
+  --ion-border-color: transparent;
+  --background: transparent; /* Fondo transparente si es necesario */
+  border: none; /* Asegúrate de que no haya bordes definidos */
+  box-shadow: none; /* Elimina cualquier sombra */
+}
+
+ion-item {
+  --ion-item-border-color: transparent; /* Elimina el color del borde */
+  --border-color: transparent; /* Adicional para asegurarte */
+  --inner-border-width: 0; /* Asegúrate de que no haya bordes internos */
+  --background: transparent; /* Fondo transparente para integrarse mejor */
+  border: none; /* Si hay bordes adicionales */
+  border-color: transparent;
 }

@@ -9,10 +9,11 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { addIcons } from 'ionicons';
-import { medkitOutline } from 'ionicons/icons';
+import { medkitOutline, personCircleOutline, femaleSharp, maleSharp } from 'ionicons/icons';
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
@@ -29,10 +30,11 @@ import { medkitOutline } from 'ionicons/icons';
     IonTitle,
     IonContent,
     ExploreContainerComponent,
+    IonIcon,
   ],
 })
 export class Tab4Page {
   constructor() {
-    addIcons({ medkitOutline });
+    addIcons({maleSharp,femaleSharp,personCircleOutline,medkitOutline});
   }
 }

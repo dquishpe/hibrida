@@ -1,14 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>About Us</ion-title>
+    <ion-title>🌟FeelAI</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <!-- Purpose Section -->
-  <ion-card>
+  <ion-card class="custom-card">
     <ion-card-header>
-      <ion-card-title>Purpose</ion-card-title>
+      <ion-card-title>
+        🌟 Purpose
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
       Our purpose is to build innovative solutions using AI and cutting-edge
@@ -17,9 +19,11 @@
   </ion-card>
 
   <!-- Mission Section -->
-  <ion-card>
+  <ion-card class="custom-card">
     <ion-card-header>
-      <ion-card-title>Mission</ion-card-title>
+      <ion-card-title>
+        🎯 Mission
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
       Our mission is to bridge the gap between technology and humanity by
@@ -28,13 +32,15 @@
   </ion-card>
 
   <!-- Members Section -->
-  <ion-card>
+  <ion-card class="custom-card">
     <ion-card-header>
-      <ion-card-title>Team Members</ion-card-title>
+      <ion-card-title>
+        👥 Team Members
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let member of members">
+        <ion-item *ngFor="let member of members" color="transparent">
           <ion-avatar slot="start">
             <img [src]="member.photo" alt="Member photo" />
           </ion-avatar>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonSelect, IonSelectOption, IonTextarea,IonButton, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonCard, IonBadge, IonCardHeader, IonCardTitle, IonCardContent, IonSelect, IonSelectOption, IonTextarea,IonButton, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Chart } from 'chart.js/auto';
@@ -11,7 +11,7 @@ import { Chart } from 'chart.js/auto';
   styleUrls: ['tab2.page.scss'],
   standalone: true,
   imports: [ReactiveFormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-    IonSelect, IonSelectOption, IonTextarea,IonButton,
+    IonSelect, IonSelectOption, IonTextarea,IonButton, IonBadge,
     IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent]
 })
 export class Tab2Page {
@@ -121,8 +121,8 @@ export class Tab2Page {
           label: 'Score Over Time',
           data: scores,
           borderColor: 'rgba(75, 192, 192, 1)',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderWidth: 2
+          backgroundColor: 'rgb(252, 252, 252)',
+          borderWidth: 2,
         }]
       },
       options: {

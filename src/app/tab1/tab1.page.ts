@@ -15,10 +15,12 @@ import {
   IonLabel,
   IonCardHeader,
   IonCardTitle,
+  IonCardSubtitle,
+  IonThumbnail,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { addIcons } from 'ionicons';
-import { cloudUploadOutline } from 'ionicons/icons';
+import { cloudUploadOutline, analyticsOutline } from 'ionicons/icons';
 import { TeachablemachineService } from '../services/teachablemachine.service';
 import { PercentPipe, CommonModule } from '@angular/common';
 
@@ -46,13 +48,15 @@ import { PercentPipe, CommonModule } from '@angular/common';
     IonList,
     IonItem,
     IonLabel,
+    IonCardSubtitle,
+    IonThumbnail,
   ],
 })
 export class Tab1Page {
-  // Declare existing attributes
+  // Atributos existentes
   topPrediction: any | null = null;
 
-  // Add the suggestions for predictions
+  // Sugerencias para las predicciones
   suggestions: { [key: string]: string } = {
     Angry:
       'Anger can be difficult to manage. Try to practice relaxation techniques.',
@@ -67,23 +71,16 @@ export class Tab1Page {
       'Surprise can be exciting! Embrace the moment and see what happens next.',
   };
 
-  /* Declare la referencia al elemento con el id image */
-  @ViewChild('image', { static: false })
-  imageElement!: ElementRef<HTMLImageElement>;
+  @ViewChild('image', { static: false }) imageElement!: ElementRef<HTMLImageElement>;
 
   imageReady = signal(false);
   imageUrl = signal('');
-
-  /* Declare los atributos para almacenar el modelo y la lista de clases */
   modelLoaded = signal(false);
   classLabels: string[] = [];
-
-  /* Lista de predicciones */
   predictions: any[] = [];
 
-  /* Registre el servicio en el constructor */
   constructor(private teachablemachine: TeachablemachineService) {
-    addIcons({ cloudUploadOutline });
+    addIcons({ cloudUploadOutline, analyticsOutline });
   }
 
   async predict() {
@@ -91,7 +88,6 @@ export class Tab1Page {
       const image = this.imageElement.nativeElement;
       this.predictions = await this.teachablemachine.predict(image);
 
-      // Determine the most probable prediction
       if (this.predictions?.length > 0) {
         this.topPrediction = this.predictions.reduce((max, current) =>
           current.probability > max.probability ? current : max
@@ -103,28 +99,25 @@ export class Tab1Page {
     }
   }
 
-  /* Método ngOnInit para cargar el modelo y las clases */
   async ngOnInit() {
     await this.teachablemachine.loadModel();
     this.classLabels = this.teachablemachine.getClassLabels();
     this.modelLoaded.set(true);
   }
-  /* El método onSubmit para enviar los datos del formulario mediante el servicio */
+
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-
       const reader = new FileReader();
 
-      // Convertir el archivo a una URL base64 para mostrarlo en el html
       reader.onload = () => {
         this.imageUrl.set(reader.result as string);
-        this.imageReady.set(true);
+        this.imageReady.set(true); // Ocultar el mensaje y botón después de subir la foto
       };
 
-      reader.readAsDataURL(file); // Leer el archivo como base64
+      reader.readAsDataURL(file);
     }
   }
 }
