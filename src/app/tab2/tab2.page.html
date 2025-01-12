@@ -51,7 +51,7 @@
     <ion-card-content>
       <ion-list>
         <!-- CARGA DE DATOS - INICIO -->
-        @for (datum of dataList; track $index) {
+        @for (datum of filteredDataList; track $index) {
         <ion-item>
           <ion-label> {{ datum?.date }} </ion-label>
           <ion-label> {{ datum?.opinion }} </ion-label>
@@ -61,6 +61,7 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  
 
   <ion-card class="styled-card">
     <ion-card-header>
