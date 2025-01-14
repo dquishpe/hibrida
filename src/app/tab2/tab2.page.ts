@@ -79,22 +79,16 @@ export class Tab2Page {
   }
   
   calculateWeeklyAverage() {
-    const now = new Date();
-    // Ajustar el primer día de la semana a lunes
-    const startOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() - (now.getDay() || 7) + 1);
-    const weeklyData = this.dataList.filter(datum => {
-      const [day, month, year] = datum.date.split('/').map(Number);
-      const date = new Date(year, month - 1, day);
-      return date >= startOfWeek;
-    });
-    const validScores = weeklyData.map(datum => parseInt(datum.score, 10)).filter(score => !isNaN(score)); // Filtrar solo puntajes válidos
+    const lastSevenEntries = this.dataList.slice(-7);  // Obtener los últimos 7 registros
+    const validScores = lastSevenEntries.map(datum => parseInt(datum.score, 10)).filter(score => !isNaN(score)); // Filtrar solo puntajes válidos
     if (validScores.length > 0) {
       const totalScore = validScores.reduce((sum, score) => sum + score, 0);
-      this.averageScore = totalScore / validScores.length; // Calcular promedio sin contar días sin registro
+      this.averageScore = totalScore / validScores.length;  // Calcular promedio basado en los últimos 7 registros
     } else {
-      this.averageScore = 0; // No hay datos
+      this.averageScore = 0;  // No hay datos
     }
   }
+  
 
   updateFeedbackMessage() {
     const roundedAverage = this.averageScore.toFixed(2); // Redondea a 2 decimales
@@ -109,46 +103,32 @@ export class Tab2Page {
     }
   }
   createChart() {
-    const now = new Date();
-    const startOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() - (now.getDay() || 7) + 1);
-
-    const weeklyData = this.dataList.filter(datum => {
-      const [day, month, year] = datum.date.split('/').map(Number);
-      const date = new Date(year, month - 1, day);
-      return date >= startOfWeek && date <= now; // Asegura que estén dentro de la semana
-    });
-
-    weeklyData.sort((a, b) => {
-      const [dayA, monthA, yearA] = a.date.split('/').map(Number);
-      const [dayB, monthB, yearB] = b.date.split('/').map(Number);
-      const dateA = new Date(yearA, monthA - 1, dayA);
-      const dateB = new Date(yearB, monthB - 1, dayB);
-      return dateA.getTime() - dateB.getTime();
-    });
-
-    const scores = weeklyData.map(datum => datum.score);
-    const labels = weeklyData.map(datum => datum.date);
-
+    // Obtener los últimos siete elementos de la lista de datos ordenada
+    const recentData = this.dataList.slice(-7); // Los 7 últimos registros
+    const scores = recentData.map(datum => datum.score); // Valores de 'score' de los últimos 7
+    const labels = recentData.map(datum => datum.date);  // Fechas de los últimos 7 como etiquetas
+  
     const canvas = document.getElementById('scoreChart') as HTMLCanvasElement;
     const ctx = canvas?.getContext('2d');
+    
     if (!ctx) {
       console.error('Failed to get canvas context.');
       return;
     }
-
+    
     if (this.chart) {
-      this.chart.destroy(); // Destruir gráfico previo si existe
+      this.chart.destroy();  // Destruir gráfico previo si existe
     }
-
+    
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: labels,  // Usar las fechas filtradas
+        labels: labels,  // Mostrar fechas en el eje X
         datasets: [{
           label: 'Score Over Time',
-          data: scores,    // Usar los puntajes correspondientes
+          data: scores,
           borderColor: 'rgba(75, 192, 192, 1)',
-          backgroundColor: 'rgb(252, 252, 252)',
+          backgroundColor: 'rgb(255, 255, 255)',
           borderWidth: 2,
         }]
       },
@@ -156,16 +136,39 @@ export class Tab2Page {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          y: {
-            min: 0, // Mínimo valor del eje Y
-            max: 5, // Máximo valor del eje Y
+          x: {
             ticks: {
-              stepSize: 1 // Opcional: define los pasos entre los valores del eje Y
+              color: 'white'  // Color de las etiquetas del eje X
+            },
+            title: {
+              display: true,
+              text: 'Fecha',
+              color: 'white',
+            }
+          },
+          y: {
+            ticks: {
+              color: 'white'  // Color de las etiquetas del eje X
+            },
+            beginAtZero: false,
+            min: 1,
+            title: {
+              display: true,
+              text: 'Puntaje',
+              color: 'white',
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white'  // Color del texto de la leyenda
             }
           }
         }
       }
     });
   }
+  
 
 }
