@@ -57,18 +57,42 @@ export class Tab1Page {
   topPrediction: any | null = null;
 
   // Sugerencias para las predicciones
-  suggestions: { [key: string]: string } = {
-    Angry:
-      'Anger can be difficult to manage. Try to practice relaxation techniques.',
-    Disgust:
-      'Disgust can be triggered by many things. Consider deep breathing exercises.',
-    Fear: 'Fear is a natural response. Exposure therapy may help in reducing its impact.',
-    Happy: 'Happiness is great! Keep doing things that bring you joy.',
-    Neutral:
-      'Neutral emotions are often a sign of balance. Take this moment to relax.',
-    Sad: 'Sadness is part of life. Try reaching out to a friend or counselor.',
-    Surprise:
-      'Surprise can be exciting! Embrace the moment and see what happens next.',
+  suggestions: { [key: string]: { message: string, videoLink: string, playlistLink: string } } = {
+    Angry: {
+      message: 'Anger can be difficult to manage. Try to practice relaxation techniques.',
+      videoLink: 'https://youtu.be/3opO2_k2uhI?si=jBIP5lv4PaSzdlrW', // Anger Management Relaxation Techniques
+      playlistLink: 'https://youtu.be/m-H-H-hYrT4?si=5dGp2-o0ZxNTVRAW' // Relaxing Music to Reduce Anger
+    },
+    Disgust: {
+      message: 'Disgust can be triggered by many things. Consider deep breathing exercises.',
+      videoLink: 'https://youtu.be/7E68A8rE_BA?si=1v87SV6Q5VRT1wSB', // Deep Breathing to Calm Down
+      playlistLink: 'https://youtu.be/m-H-H-hYrT4?si=5dGp2-o0ZxNTVRAW' // Mindfulness Music for Relaxation
+    },
+    Fear: {
+      message: 'Fear is a natural response. Exposure therapy may help in reducing its impact.',
+      videoLink: 'https://youtu.be/4hLhwQp2xOo?si=SveMjzwcigRpm0qN', // Overcome Fear Breathing & Meditation
+      playlistLink: 'https://youtu.be/m-H-H-hYrT4?si=5dGp2-o0ZxNTVRAW' // Calming Music for Overcoming Anxiety
+    },
+    Happy: {
+      message: 'Happiness is great! Keep doing things that bring you joy.',
+      videoLink: 'https://youtu.be/4hLhwQp2xOo?si=SveMjzwcigRpm0qN', // Happy Vibes Only
+      playlistLink: 'https://youtu.be/c_Gdi945_RI?si=ZThSRA-cpqy3fzbd' // Happy Music for Positive Energy
+    },
+    Neutral: {
+      message: 'Neutral emotions are often a sign of balance. Take this moment to relax.',
+      videoLink: 'https://www.youtube.com/live/UOJ4V3DAAx8?si=JAAw-tm4r8rXjeQo', // Calm and Peaceful Music
+      playlistLink: 'https://youtu.be/eXsU_EUMWOE?si=xmYjyvRY-UhJpTco' // Chillout Music for Focus & Balance
+    },
+    Sad: {
+      message: 'Sadness is part of life. Try reaching out to a friend or counselor.',
+      videoLink: 'https://youtu.be/7E68A8rE_BA?si=1v87SV6Q5VRT1wSB', // How to Cope with Sadness
+      playlistLink: 'https://youtu.be/eXsU_EUMWOE?si=xmYjyvRY-UhJpTco' // Healing Music for Sadness
+    },
+    Surprise: {
+      message: 'Surprise can be exciting! Embrace the moment and see what happens next.',
+      videoLink: 'https://youtu.be/Mhj15W23IjA?si=AWYAjJcRKEsstu1O', // Inspirational Speech on Embracing Surprises
+      playlistLink: 'https://youtu.be/OO2kPK5-qno?si=rq4wR3J8v4Ihvzhm' // Uplifting Music for Surprises
+    },
   };
 
   @ViewChild('image', { static: false }) imageElement!: ElementRef<HTMLImageElement>;

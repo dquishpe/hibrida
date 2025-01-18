@@ -29,7 +29,7 @@ export class Tab2Page {
     const currentDate = this.getCurrentDate(); // Fecha actual
     const existingEntry = this.dataList.find(datum => datum.date === currentDate);
     if (existingEntry) {
-      alert('Ya has enviado una respuesta para el día de hoy.'); // Mensaje de advertencia
+      alert('You have already submitted a response for today :) Please come back tomorrow!'); // Mensaje de advertencia
       return; // Salir sin guardar
     }
     const formData = { ...this.myForm.value, date: currentDate };
@@ -93,17 +93,16 @@ export class Tab2Page {
   updateFeedbackMessage() {
     const roundedAverage = this.averageScore.toFixed(2); // Redondea a 2 decimales
     if (this.averageScore >= 4.5) {
-      this.feedbackMessage = `¡Estás teniendo una semana increíble! Tu promedio es ${roundedAverage}. Sigue así.`;
+      this.feedbackMessage = `You're having an amazing week! Your average is ${roundedAverage}. Keep it up✨`;
     } else if (this.averageScore >= 3) {
-      this.feedbackMessage = `Tu semana ha sido buena, con un promedio de ${roundedAverage}. Mantén el equilibrio.`;
+      this.feedbackMessage = `Your week has been good, your average is ${roundedAverage}. Keep the balance✨`;
     } else if (this.averageScore >= 1.5) {
-      this.feedbackMessage = `Parece que ha sido una semana desafiante.Tu promedio es ${roundedAverage}. ¡Ánimo!`;
+      this.feedbackMessage = `It sounds like it's been a challenging week. Your average is ${roundedAverage} You can do anything!🦾`;
     } else {
-      this.feedbackMessage = `Es un momento difícil, con un promedio de ${roundedAverage}. Pero todo mejora con el tiempo.`;
+      this.feedbackMessage = `It is a difficult time, with an average of ${roundedAverage}. But don't worry, everything gets better with time❤️‍🩹`;
     }
   }
   createChart() {
-    // Obtener los últimos siete elementos de la lista de datos ordenada
     const recentData = this.dataList.slice(-7); // Los 7 últimos registros
     const scores = recentData.map(datum => datum.score); // Valores de 'score' de los últimos 7
     const labels = recentData.map(datum => datum.date);  // Fechas de los últimos 7 como etiquetas
@@ -142,7 +141,7 @@ export class Tab2Page {
             },
             title: {
               display: true,
-              text: 'Fecha',
+              text: 'Date',
               color: 'white',
             }
           },
@@ -154,7 +153,7 @@ export class Tab2Page {
             min: 1,
             title: {
               display: true,
-              text: 'Puntaje',
+              text: 'Score',
               color: 'white',
             }
           }

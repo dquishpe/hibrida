@@ -17,6 +17,7 @@
   ion-card-title {
     font-weight: bold;
     font-size: 1.2rem;
+    color: #fff;
   }
   
   .custom-textarea {
@@ -32,7 +33,7 @@
   
   .feedback-message {
     text-align: center;
-    color: #4d3b99;
+    color: #ffffff;
     font-size: 1rem;
   }
   
@@ -48,13 +49,6 @@
   }
   
   ion-label {
-    color: var(--ion-text-color, #333) !important; /* Cambia el color del texto si es necesario */
+    color: var(--ion-text-color, #ffffff) !important; 
   }
 
-  // .select {
-  //   --background: linear-gradient(135deg, #64c4c4, #4d3b99);
-  //   --color: #fff;
-  //   --border-radius: 12px;
-  //   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  // }
-  

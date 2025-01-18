@@ -22,17 +22,17 @@ export class Tab3Page {
   members = [
     {
       name: 'Dhamar Quishpe',
-      role: 'UI/UX Designer',
+      role: 'Computer Science Engineering Student',
       photo: 'assets/images/quishpe_dhamar.jpeg', // Replace with your image path
     },
     {
       name: 'Randy Rivera',
-      role: 'AI Specialist',
+      role: 'Computer Science Engineering Student',
       photo: 'assets/images/rivera_randy.jpeg', // Replace with your image path
     },
     {
       name: 'Jose Marin',
-      role: 'Backend Developer',
+      role: 'Computer Science Engineering Student',
       photo: 'assets/images/marin_jose.jpg', // Replace with your image path
     },
   ];

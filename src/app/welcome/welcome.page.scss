@@ -1,0 +1,68 @@
+/* Sobrescribir el fondo del ion-content */
+ion-content {
+    --background: transparent !important;  /* Eliminar el fondo blanco predeterminado */
+  }
+  
+  /* Sobrescribir el fondo del :host */
+  :host {
+    --background: transparent !important;  /* Eliminar el fondo blanco del host */
+  }
+  
+  /* Estilos de la imagen de fondo */
+  .welcome-background {
+    background-image: url('/assets/images/welcome.jpeg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100% !important;
+  }
+  
+  /* Otros estilos */
+  .content-wrapper {
+    text-align: center;
+    color: #ffffff;
+    z-index: 1;
+  }
+  
+  .title {
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    color: #106682; /* Azul claro */
+    text-shadow: 2px 2px 5px white;
+    margin-bottom: 300px;
+    margin-top: 250px;
+  }
+  
+  /* Estilos del botón */
+.enter-btn {
+    background: linear-gradient(to right, #87CEEB, #4682B4) !important;  /* Degradado de celeste a azul */
+    color: white !important;  /* Texto en blanco */
+    width: 300px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out; /* Añadido el efecto de transform */
+    --background: transparent !important; /* Asegurar que el fondo predeterminado no se aplique */
+    --background-activated: transparent !important;
+    --background-hover: transparent !important;
+    --background-focused: transparent !important;
+    --background-activated-opacity: 0 !important;
+    --background-focused-opacity: .24 !important;
+    --background-hover-opacity: .08 !important;
+}
+
+/* Efecto hover para aumentar el tamaño */
+.enter-btn:hover {
+    background: linear-gradient(to right, #4682B4, #87CEEB) !important; /* Cambio de degradado al pasar el ratón */
+    transform: scale(1.1); /* Aumentar el tamaño del botón */
+}
+
+/* Efecto para cuando el botón está activo o presionado */
+.enter-btn:active {
+    transform: scale(0.95); /* Disminuir el tamaño cuando se hace clic */
+}

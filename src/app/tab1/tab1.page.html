@@ -1,11 +1,10 @@
-<ion-content [fullscreen]="true">
   <!-- HEADER -->
-  <ion-header [translucent]="true">
+  <ion-header>
     <ion-toolbar>
       <ion-title>🌟FeelAI</ion-title>
     </ion-toolbar>
   </ion-header>
-
+<ion-content [fullscreen]="true">
   <!-- MENSAJE INICIAL - Solo se muestra si no se ha subido una imagen -->
   <ion-card *ngIf="!imageReady()">
     <ion-card-content>
@@ -76,13 +75,21 @@
   </ion-card>
 
   <!-- SUGERENCIAS BASADAS EN LA PREDICCIÓN -->
-  <ion-card *ngIf="topPrediction" class="suggestion-card">
-    <ion-card-header>
-      <ion-card-title>Suggestion✨</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ suggestions[topPrediction?.className] }}</p>
-    </ion-card-content>
-  </ion-card>
+<ion-card *ngIf="topPrediction" class="suggestion-card">
+  <ion-card-header>
+    <ion-card-title>Suggestion✨</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>{{ suggestions[topPrediction?.className]?.message }}</p>
+    <p *ngIf="suggestions[topPrediction?.className]?.videoLink">
+      <strong>Recommended Video:</strong>
+      <a [href]="suggestions[topPrediction?.className]?.videoLink" target="_blank">Watch Video</a>
+    </p>
+    <p *ngIf="suggestions[topPrediction?.className]?.playlistLink">
+      <strong>Suggested Playlist:</strong>
+      <a [href]="suggestions[topPrediction?.className]?.playlistLink" target="_blank">Listen to Playlist</a>
+    </p>
+  </ion-card-content>
+</ion-card>
 
 </ion-content>
