@@ -19,7 +19,13 @@
       <p>On a scale of 1 to 5, how do you feel today?</p>
 
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <ion-select formControlName="score" label="You feel today?" placeholder="Select" interface="popover" class="select">
+        <ion-select
+          formControlName="score"
+          label="You feel today?"
+          placeholder="Select"
+          interface="popover"
+          class="select"
+        >
           <ion-select-option value="1">1 😢</ion-select-option>
           <ion-select-option value="2">2 😟</ion-select-option>
           <ion-select-option value="3">3 😐</ion-select-option>
@@ -30,10 +36,16 @@
         <ion-textarea
           formControlName="opinion"
           placeholder="Write in your diary..."
-          class="custom-textarea">
+          class="custom-textarea"
+        >
         </ion-textarea>
 
-        <ion-button expand="block" type="submit" color="tertiary" [disabled]="!myForm.valid">
+        <ion-button
+          expand="block"
+          type="submit"
+          color="tertiary"
+          [disabled]="!myForm.valid"
+        >
           ✉️ Send
         </ion-button>
       </form>
@@ -59,7 +71,6 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-  
 
   <ion-card class="styled-card">
     <ion-card-header>
@@ -71,7 +82,32 @@
       <div class="chart-container">
         <canvas id="scoreChart"></canvas>
       </div>
+      <div class="week-info">
+        <p>Start of Week: {{ startOfWeek | date: 'shortDate' }}</p>
+        <p>End of Week: {{ endOfWeek | date: 'shortDate' }}</p>
+      </div>
       <p class="feedback-message">{{ feedbackMessage }}</p>
+      <div
+        class="week-navigation-buttons"
+        style="display: flex; justify-content: space-between; margin-top: 20px"
+      >
+        <ion-button
+          (click)="shiftToPreviousWeek()"
+          expand="block"
+          fill="outline"
+          color="primary"
+        >
+          Previous Week
+        </ion-button>
+        <ion-button
+          (click)="shiftToNextWeek()"
+          expand="block"
+          fill="outline"
+          color="primary"
+        >
+          Next Week
+        </ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

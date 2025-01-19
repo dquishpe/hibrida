@@ -71,4 +71,4 @@ testem.log
 Thumbs.db
 
 # Credentials
-/src/credentials.ts
+/src/credentials*.ts
