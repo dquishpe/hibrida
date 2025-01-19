@@ -82,11 +82,11 @@
   <ion-card-content>
     <p>{{ suggestions[topPrediction?.className]?.message }}</p>
     <p *ngIf="suggestions[topPrediction?.className]?.videoLink">
-      <strong>Recommended Video:</strong>
+      <strong>🎧: </strong>
       <a [href]="suggestions[topPrediction?.className]?.videoLink" target="_blank">Watch Video</a>
     </p>
     <p *ngIf="suggestions[topPrediction?.className]?.playlistLink">
-      <strong>Suggested Playlist:</strong>
+      <strong>🎶: </strong>
       <a [href]="suggestions[topPrediction?.className]?.playlistLink" target="_blank">Listen to Playlist</a>
     </p>
   </ion-card-content>

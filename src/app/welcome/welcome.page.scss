@@ -18,13 +18,23 @@ ion-content {
     justify-content: center !important;
     align-items: center !important;
     height: 100% !important;
+    width: 100% !important;
+    flex-direction: column; 
+    text-align: center;
   }
   
   /* Otros estilos */
   .content-wrapper {
     text-align: center;
     color: #ffffff;
-    z-index: 1;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   
   .title {
@@ -32,12 +42,11 @@ ion-content {
     font-size: 4rem;
     color: #106682; /* Azul claro */
     text-shadow: 2px 2px 5px white;
-    margin-bottom: 300px;
-    margin-top: 250px;
+    margin: 0;
   }
   
   /* Estilos del botón */
-.enter-btn {
+  .enter-btn {
     background: linear-gradient(to right, #87CEEB, #4682B4) !important;  /* Degradado de celeste a azul */
     color: white !important;  /* Texto en blanco */
     width: 300px;
